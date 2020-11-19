@@ -68,5 +68,42 @@ namespace ADO
                 connection.Close();
             }
         }
+
+        public static void ConnectedWithParameter()
+        {
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //2. aprire una connessione
+
+                connection.Open();
+
+                //3. creare un command
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = "select * from movies";
+
+                //4. eseguire il command --> datareader
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                //5. leggere i dati
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0} - {1} - {2} - {3}",
+                        reader["ID"],
+                        reader["titolo"],
+                        reader["genere"],
+                        reader["durata"]);
+                }
+
+                //6. chiudere la connessione
+
+                connection.Close();
+            }
+        }
     }
+
+
 }
