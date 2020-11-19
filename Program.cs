@@ -6,7 +6,11 @@ namespace ADO
     {
         static void Main(string[] args)
         {
-            ConnectedMode.Connected();
+            //ConnectedMode.Connected();
+
+            //ConnectedMode.ConnectedWithParameters();
+
+            ConnectedMode.ConnectedStoredProcedure();
 
         }
     }
