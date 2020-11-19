@@ -178,6 +178,29 @@ namespace ADO
                 connection.Close();
             }
         }
+
+        public static void ConnectedScalar()
+        {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = connection;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = "select count(*) from movies";
+
+                int count = (int)cmd.ExecuteScalar(); //ho castato l'oggetto ad int
+
+                Console.WriteLine("Numero film in lista: {0}", count);
+
+                connection.Close();
+
+
+
+            }
+        }
+
     }
 
 
